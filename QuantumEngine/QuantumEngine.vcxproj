@@ -88,6 +88,7 @@
     <ClInclude Include="Components\PhysicsComponent.h" />
     <ClInclude Include="Entities\GameObject.h" />
     <ClInclude Include="Files\FileManager.h" />
+    <ClInclude Include="Entities\GameObjectManager.h" />
     <ClInclude Include="Input\InputManager.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Memory\MemoryManager.h" />
@@ -112,6 +113,7 @@
     <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="Entities\GameObject.cpp" />
     <ClCompile Include="Files\FileManager.cpp" />
+    <ClCompile Include="Entities\GameObjectManager.cpp" />
     <ClCompile Include="Input\InputManager.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Memory\MemoryManager.cpp" />

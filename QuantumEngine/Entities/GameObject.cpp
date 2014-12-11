@@ -5,7 +5,7 @@
 RTTI_DEFINITIONS(GameObject)
 
 
-GameObject::GameObject(TransformComponent * transformComponent) : transform(transformComponent)
+GameObject::GameObject(int id , TransformComponent * transformComponent) : transform(transformComponent)
 {
 	if (!transform)
 	{

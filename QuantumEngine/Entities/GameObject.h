@@ -10,7 +10,6 @@ class GameObject : public RTTI
 {
 	RTTI_DECLARATIONS(Component, RTTI);
 public:
-	ENGINE_SHARED GameObject(TransformComponent * transform = nullptr);
 	ENGINE_SHARED ~GameObject();
 	ENGINE_SHARED virtual void update();
 	ENGINE_SHARED TransformComponent * getTransform();
@@ -47,7 +46,13 @@ public:
 	}
 
 private:
+	ENGINE_SHARED GameObject(int id,TransformComponent * transform = nullptr);
+
+	friend class GameObjectManager;
+	int id;
 	TransformComponent * transform;
 	std::vector<Component * > components;
+	std::string name;
+	GameObject * parent;
 };
 
