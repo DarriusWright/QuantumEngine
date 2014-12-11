@@ -1,5 +1,6 @@
 #include "LuaStateManager.h"
 
+RTTI_DEFINITIONS(LuaStateManager)
 
 LuaStateManager::LuaStateManager()
 {
@@ -56,8 +57,7 @@ bool LuaStateManager::startUp()
 {
 	luaState = LuaPlus::LuaState::Create(true);
 	globals = luaState->GetGlobals();
-	globals.Register("Print", LuaStateManager::Print);
-
+	globals.Register("Print", *this, &LuaStateManager::Print);
 	return true;
 }
 
@@ -67,4 +67,9 @@ bool LuaStateManager::shutDown()
 	luaState = nullptr;
 
 	return true;
+}
+
+LuaObject LuaStateManager::getLuaObject(const char * name)
+{
+	return luaState->GetGlobal(name);
 }

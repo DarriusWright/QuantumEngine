@@ -1,13 +1,19 @@
 #pragma once
-class Manager
-{
-public:
-	Manager();
-	~Manager();
+#include "RTTI.h"
+#include "ExportHeader.h"
 
-	virtual bool startUp() = 0;
-	virtual bool shutDown() = 0;
-	virtual void update() = 0;
+class Manager : public RTTI
+{
+
+	RTTI_DECLARATIONS(Manager, RTTI);
+
+public:
+
+	ENGINE_SHARED Manager();
+	ENGINE_SHARED ~Manager();
+	ENGINE_SHARED virtual bool startUp() = 0;
+	ENGINE_SHARED virtual bool shutDown() = 0;
+	ENGINE_SHARED virtual void update() = 0;
 
 
 protected:

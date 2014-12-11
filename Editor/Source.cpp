@@ -4,13 +4,8 @@
 #include <QtWidgets\qapplication.h>
 
 #include "GameEditor.h"
-#ifdef _DEBUG
-#pragma comment( lib, "..\\Debug\\LUAPlus.lib")
-#else
-#pragma comment( lib, "..\\Release\\LUAPlus.lib")
-#endif
-#include <LuaPlus.h>
-using namespace LuaPlus;
+#include <Scripting\LuaStateManager.h>
+
 
 
 // Direct registered function
@@ -19,61 +14,22 @@ void HelloWorld()
 	std::cout <<"LUA : " << "Hello world!" << std::endl;
 }
 
-// Registered function MUST always have this signature (int (funcName) (LuaPlus::LuaState*))
-int Print(LuaPlus::LuaState* pState)
-{
-	// Get the argument count
-	int top = pState->GetTop();
 
-	std::stringstream output;
-	for (int i = 1; i <= top; ++i)
-	{
-		// Retrieve all arguments, if possible they will be converted to strings
-		output <<"LUA : " << pState->CheckString(i) << std::endl;
-	}
-	std::cout << output.str();
-
-	// We don't return any values to the script
-	return 0;
-}
 
 int main(int argc, char * argv [])
 {
 	// Create a new lua state and load all default lua libraries
-	LuaPlus::LuaState* pState = LuaPlus::LuaState::Create(true);
+	
 	QApplication app(argc, argv);
-	GameEditor editor(pState);
+	GameEditor editor;
 
-	// Get the global object of our state so that we can register global functions
-	LuaPlus::LuaObject globals = pState->GetGlobals();
+	LUA->startUp();
+	LUA->registerFunctionDirect("HelloWorld", HelloWorld);
+	LUA->executeScript("LuaScripts/test.lua");
+	LuaPlus::LuaFunction<float> LuaSquare = LUA->getLuaObject("Square");
+	LUA->executeScript("LuaScripts/script.lua");
 
-	// Register our HelloWorld() function directly to lua
-	globals.RegisterDirect("HelloWorld", HelloWorld);
-
-	// Register our Print() function to lua
-	globals.Register("Print", Print);
-
-	
-	
-	if (pState->DoFile("LuaScripts/test.lua"))
-	{
-		// An error occured
-		if (pState->GetTop() == 1)
-			std::cout << "An error occured: " << pState->CheckString(1) << std::endl;
-	}
-	LuaPlus::LuaFunction<float> LuaSquare = pState->GetGlobal("Square");
-	float result = LuaSquare(5);
-	std::cout << "C++" << result << std::endl;
-	//LuaPlus::LuaObject positionTable = globals.GetByName("positionVec");
-	//globals.SetString("phrase", "Hi There I am a changed string");
-
-	if (pState->DoFile("LuaScripts/script.lua"))
-	{
-		// An error occured
-		if (pState->GetTop() == 1)
-			std::cout << "An error occured: " << pState->CheckString(1) << std::endl;
-	}
-
+	editor.show();
 
 	return app.exec();
 }

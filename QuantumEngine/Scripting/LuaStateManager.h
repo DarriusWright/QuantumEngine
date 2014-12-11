@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <iostream>
 #include <sstream>
+#include <ExportHeader.h>
 using namespace LuaPlus;
 
 #ifdef _DEBUG
@@ -15,15 +16,14 @@ using namespace LuaPlus;
 #include <LuaPlus.h>
 using namespace LuaPlus;
 
-#define LUA LuaStateManager::getInstance();
+#define LUA LuaStateManager::getInstance()
 
 
 
 
 class LuaStateManager  : public ScriptManager
 {
-
-
+	RTTI_DECLARATIONS(LuaStateManager, ScriptManager)
 
 public:
 	~LuaStateManager();
@@ -45,17 +45,24 @@ public:
 		globals.Register(name, function);
 	}
 
-	void executeScript(const char * filename);
-	void executeScript(const char * filename, const char * errorMessage);
-	void executeSource(const char * filename);
-	void executeSource(const char * filename, const char * errorMessage);
-	void update()override;
-	bool startUp()override;
-	bool shutDown()override;
+	template <class Caller>
+	void registerFunction(const char * name, Caller & caller, int (Caller::*func)(LuaState*))
+	{
+		globals.Register(name, caller, func);
+	}
+
+	ENGINE_SHARED void executeScript(const char * filename);
+	ENGINE_SHARED void executeScript(const char * filename, const char * errorMessage);
+	ENGINE_SHARED void executeSource(const char * filename);
+	ENGINE_SHARED void executeSource(const char * filename, const char * errorMessage);
+	ENGINE_SHARED LuaObject getLuaObject(const char * name);
+	ENGINE_SHARED void update()override;
+	ENGINE_SHARED bool startUp()override;
+	ENGINE_SHARED bool shutDown()override;
 	
 
 protected :
-	LuaStateManager();
+	ENGINE_SHARED LuaStateManager();
 	LuaObject globals;
 	LuaState * luaState;
 	// Registered function MUST always have this signature (int (funcName) (LuaPlus::LuaState*))
@@ -63,13 +70,13 @@ private:
 	int Print(LuaPlus::LuaState* luaState)
 	{
 		// Get the argument count
-		int top = pState->GetTop();
+		int top = luaState->GetTop();
 
 		std::stringstream output;
 		for (int i = 1; i <= top; ++i)
 		{
 			// Retrieve all arguments, if possible they will be converted to strings
-			output << "LUA : " << pState->CheckString(i) << std::endl;
+			output << "LUA : " << luaState->CheckString(i) << std::endl;
 		}
 		std::cout << output.str();
 
