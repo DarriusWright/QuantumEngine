@@ -17,3 +17,14 @@ InputComponent::~InputComponent()
 void InputComponent::update()
 {
 }
+
+void InputComponent::initialize()
+{
+	Component::initialize();
+
+}
+
+void InputComponent::registerClass()
+{
+
+}

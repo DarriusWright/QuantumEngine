@@ -16,3 +16,18 @@ void Component::update()
 {
 
 }
+
+void Component::initialize()
+{
+	bool classRegistered = false;
+	if (!classRegistered)
+	{
+		registerClass();
+	}
+}
+
+
+void Component::registerClass()
+{
+
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include <RTTI.h>
+#include <Scripting\LuaStateManager.h>
 
 class GameObject;
 class Component : public RTTI
@@ -9,9 +10,13 @@ class Component : public RTTI
 public:
 	ENGINE_SHARED Component(GameObject * gameObject);
 	ENGINE_SHARED ~Component();
+	ENGINE_SHARED virtual void initialize();
 	ENGINE_SHARED virtual void update();
 
-private:
+protected:
+	ENGINE_SHARED virtual void registerClass();
+
 	GameObject * parent;
+
 };
 

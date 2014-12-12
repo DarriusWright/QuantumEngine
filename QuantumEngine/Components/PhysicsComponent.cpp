@@ -14,6 +14,16 @@ PhysicsComponent::~PhysicsComponent()
 }
 
 
+void PhysicsComponent::initialize()
+{
+	Component::initialize();
+}
+
+void PhysicsComponent::registerClass()
+{
+
+}
+
 void PhysicsComponent::update()
 {
 

@@ -1,4 +1,5 @@
 #include "GameEditor.h"
+#include <lua.hpp>
 
 
 GameEditor::GameEditor()//(LuaPlus::LuaState * luaState) : luaState(luaState)
@@ -20,4 +21,9 @@ void GameEditor::setUpMenu()
 GameEditor::~GameEditor()
 {
 	LUA->shutDown();
+	GAMEOBJECT->shutDown();
+	
+
+	delete LUA;
+	delete GAMEOBJECT;
 }

@@ -11,5 +11,9 @@ public:
 	ENGINE_SHARED ~GraphicsComponent();
 	ENGINE_SHARED virtual void update()override;
 	ENGINE_SHARED virtual void draw();
+	ENGINE_SHARED virtual void initialize()override;
+protected:
+	ENGINE_SHARED virtual void registerClass()override;
+
 };
 

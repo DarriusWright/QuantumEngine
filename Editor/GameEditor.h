@@ -1,8 +1,9 @@
 #pragma once
 
 #include <QtWidgets\qmainwindow.h>
-#include <LuaPlus.h>
+//#include <LuaPlus.h>
 #include <Scripting\LuaStateManager.h>
+#include <Entities\GameObjectManager.h>
 #include <QtWidgets\qaction.h>
 #include <QtWidgets\qmenu.h>
 #include <QtWidgets\qmenubar.h>

@@ -5,8 +5,24 @@
 
 #include "GameEditor.h"
 #include <Scripting\LuaStateManager.h>
+#include <Entities\GameObjectManager.h>
+
+#include <LuaBridge.h>
+#include <iostream>
+
+extern "C" {
+# include "lua.h"
+# include "lauxlib.h"
+# include "lualib.h"
+}
 
 
+using namespace luabridge;
+
+
+void printMessage(const std::string& s) {
+	std::cout << "LUA : " << s << std::endl;
+}
 
 // Direct registered function
 void HelloWorld()
@@ -18,16 +34,15 @@ void HelloWorld()
 
 int main(int argc, char * argv [])
 {
-	// Create a new lua state and load all default lua libraries
-	
+
 	QApplication app(argc, argv);
 	GameEditor editor;
 
+	GAMEOBJECT->startUp();
+
 	LUA->startUp();
-	LUA->registerFunctionDirect("HelloWorld", HelloWorld);
 	LUA->executeScript("LuaScripts/test.lua");
-	LuaPlus::LuaFunction<float> LuaSquare = LUA->getLuaObject("Square");
-	LUA->executeScript("LuaScripts/script.lua");
+
 
 	editor.show();
 

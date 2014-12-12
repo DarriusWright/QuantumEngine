@@ -10,7 +10,11 @@ public:
 	ENGINE_SHARED PhysicsComponent(GameObject * gameObject);
 	ENGINE_SHARED ~PhysicsComponent();
 	ENGINE_SHARED virtual void update()override;
-private:
+	ENGINE_SHARED virtual void initialize()override;
+	
+protected:
+
+	ENGINE_SHARED virtual void registerClass()override;
 
 };
 

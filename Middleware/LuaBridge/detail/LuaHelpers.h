@@ -29,6 +29,13 @@
 
 // These are for Lua versions prior to 5.2.0.
 //
+
+extern "C" {
+# include "lua.h"
+# include "lauxlib.h"
+# include "lualib.h"
+}
+
 #if LUA_VERSION_NUM < 502
 inline int lua_absindex (lua_State* L, int idx)
 {

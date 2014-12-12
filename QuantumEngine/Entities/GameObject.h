@@ -14,6 +14,7 @@ public:
 	ENGINE_SHARED virtual void update();
 	ENGINE_SHARED TransformComponent * getTransform();
 	ENGINE_SHARED void addComponent(Component * component);
+	ENGINE_SHARED void initialize();
 	template<typename T> T * getComponent()
 	{
 		static_assert(std::is_base_of<Component, T>::value, "T must derive from Component");
@@ -45,14 +46,21 @@ public:
 		return foundComponents;
 	}
 
+
+	int getId();
+	const std::vector<Component*> & getComponents();
+	const TransformComponent * getTranform();
+	void setTrasform(TransformComponent * transform);
+
+	std::string name;
+	GameObject * parent;
+
 private:
 	ENGINE_SHARED GameObject(int id,TransformComponent * transform = nullptr);
+	TransformComponent * transform;
 
 	friend class GameObjectManager;
 	int id;
-	TransformComponent * transform;
 	std::vector<Component * > components;
-	std::string name;
-	GameObject * parent;
 };
 

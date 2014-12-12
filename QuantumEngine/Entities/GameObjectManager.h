@@ -28,7 +28,6 @@ public:
 
 protected: 
 	ENGINE_SHARED GameObjectManager();
-
 	std::map<int, GameObject*> gameObjects;
 	static int numGameObjects;
 };

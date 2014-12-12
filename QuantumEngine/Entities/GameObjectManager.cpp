@@ -2,6 +2,8 @@
 
 RTTI_DEFINITIONS(GameObjectManager)
 
+int GameObjectManager::numGameObjects = 0;
+
 GameObjectManager::GameObjectManager()
 {
 }

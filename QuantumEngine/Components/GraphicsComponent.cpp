@@ -20,3 +20,13 @@ void GraphicsComponent::draw()
 {
 
 }
+
+void GraphicsComponent::initialize()
+{
+	Component::initialize();
+}
+
+void GraphicsComponent::registerClass()
+{
+
+}

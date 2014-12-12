@@ -1,8 +1,6 @@
-HelloWorld()
-testString = "LuaBridge works!"
-Print(testString)
 number = 42 * 45
-Print(number)
+mystring = "working scripting stuff"
+print(mystring);
 
 function Square(val)
 	Print(val / val)

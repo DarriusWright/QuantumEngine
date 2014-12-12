@@ -31,6 +31,26 @@ GameObject::~GameObject()
 	components.clear();
 }
 
+
+
+int GameObject::getId()
+{
+	return id;
+}
+const std::vector<Component*> & GameObject::getComponents()
+{
+	return components;
+}
+const TransformComponent * GameObject::getTranform()
+{
+	return transform;
+}
+void GameObject::setTrasform(TransformComponent * transform)
+{
+	//TODO copy transform components
+
+}
+
 void GameObject::update()
 {
 	for (Component * c : components)
@@ -42,6 +62,14 @@ void GameObject::update()
 			g->draw();
 		}
 
+	}
+}
+
+void GameObject::initialize()
+{
+	for (Component * c : components)
+	{
+		c->initialize();
 	}
 }
 
