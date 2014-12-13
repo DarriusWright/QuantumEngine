@@ -1,7 +1,8 @@
 printMessage("ssfdsfdfsfsfd");
+positionVec = {x = 32 , y = 45}
 number = 32;
 function Square(val)
-	Print(val * val)
+	printMessage(val * val)
 	return val * val;
 end
 

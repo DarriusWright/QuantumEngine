@@ -44,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(Configuration);$(ProjectDir);$(SolutionDir)Middleware\Lua\include;$(SolutionDir)Middleware\LuaBridge;$(SolutionDir)Middleware\glm</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(Configuration);$(ProjectDir);$(SolutionDir)Middleware\Lua\include;$(SolutionDir)Middleware\LuaBridge;$(SolutionDir)Middleware\glm;$(SolutionDir)LuaPlus;$(SolutionDir)LuaPlus\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

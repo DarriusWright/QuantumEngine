@@ -1,14 +1,15 @@
 #include <windows.h>
 #include <iostream>
 #include <sstream>
-
 #include "..\\LuaPlusLib\\LuaPlus.h"
 #ifdef _DEBUG
 #pragma comment( lib, "..\\Debug\\LUAPlus.lib")
 #else
 #pragma comment( lib, "..\\Release\\LUAPlus.lib")
 #endif
+#include <LuaObject.h>
 
+using namespace LuaPlus;
 
 // Direct registered function
 void HelloWorld()
@@ -26,7 +27,7 @@ int Print(LuaPlus::LuaState* pState)
 	for (int i = 1; i <= top; ++i)
 	{
 		// Retrieve all arguments, if possible they will be converted to strings
-		output << pState->CheckString(i) << std::endl;
+		output <<"LUA : " << pState->CheckString(i) << std::endl;
 	}
 	std::cout << output.str();
 
@@ -48,17 +49,38 @@ int main()
 	// Register our Print() function to lua
 	globals.Register("printMessage", Print);
 
-	// Just run our "test.lua" file here
-	char pPath[MAX_PATH];
-	GetCurrentDirectory(MAX_PATH, pPath);
-	strcat_s(pPath, MAX_PATH, "/LuaScripts/test.lua");
-
-	if (pState->DoFile(pPath))
+	if (pState->DoFile("LuaScripts/test.lua"))
 	{
 		// An error occured
 		if (pState->GetTop() == 1)
 			std::cout << "An error occured: " << pState->CheckString(1) << std::endl;
 	}
+	
+	LuaObject positionTable = globals.GetByName("positionVec");
+	LuaObject x = positionTable["x"];
+	float value;
+	if (x.IsNumber())
+	{
+		value = x.GetFloat();
+	}
+
+	x.AssignNumber(pState, 5.0f);
+
+	if (pState->DoFile("LuaScripts/test.lua"))
+	{
+		// An error occured
+		if (pState->GetTop() == 1)
+			std::cout << "An error occured: " << pState->CheckString(1) << std::endl;
+	}
+
+	positionTable = globals.GetByName("positionVec");
+	x = positionTable["x"];
+	float value;
+	if (x.IsNumber())
+	{
+		value = x.GetFloat();
+	}
+
 
 	// Clean-up
 	LuaPlus::LuaState::Destroy(pState);
