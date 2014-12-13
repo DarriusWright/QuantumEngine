@@ -37,43 +37,41 @@ void LuaStateManager::update()
 
 }
 
-void LuaStateManager::executeScript(const char * filename)
+
+void LuaStateManager::checkForErrors(int state)
 {
-	
-	if (luaL_loadfile(luaState, filename) || lua_pcall(luaState, 0, 0, 0))
+	if (state != 0)
 	{
 		system("COLOR 4");
-		std::cout << "Error : " << filename << ", script does not exist. " << std::endl;
+		std::cout << "Error : " << lua_tostring(luaState,state) << std::endl;
 		system("COLOR 0");
 	}
+}
+
+void LuaStateManager::executeScript(const char * filename)
+{
+	int state = luaL_dofile(luaState, filename);
+	checkForErrors(state);
+	if (state == 0) lua_pcall(luaState, 0, 0, 0);
 	
 }
 void LuaStateManager::executeScript(const char * filename, const char * errorMessage)
 {
-	if (luaL_loadfile(luaState, filename) || lua_pcall(luaState, 0, 0, 0))
-	{
-		system("COLOR 4");
-		std::cout << errorMessage << std::endl;
-		system("COLOR 0");
-	}
+	int state = luaL_dofile(luaState, filename);
+	checkForErrors(state);
+	if (state == 0) lua_pcall(luaState, 0, 0, 0);
 }
-void LuaStateManager::executeSource(const char * filename, const char * errorMessage)
+void LuaStateManager::executeSource(const char * source, const char * errorMessage)
 {
-	if (luaL_loadstring(luaState, filename) || lua_pcall(luaState, 0, 0, 0))
-	{
-		system("COLOR 4");
-		std::cout << errorMessage << std::endl;
-		system("COLOR 0");
-	}
+	int state = luaL_dostring(luaState, source);
+	checkForErrors(state);
+	if (state == 0) lua_pcall(luaState, 0, 0, 0);
 }
-void LuaStateManager::executeSource(const char * filename)
+void LuaStateManager::executeSource(const char * source)
 {
-	if (luaL_loadstring(luaState, filename) || lua_pcall(luaState, 0, 0, 0))
-	{
-		system("COLOR 4");
-		std::cout << "Error : " << "source failed to execute " << std::endl;
-		system("COLOR 0");
-	}
+	int state = luaL_dostring(luaState, source);
+	checkForErrors(state);
+	if (state == 0) lua_pcall(luaState, 0, 0, 0);
 }
 
 bool LuaStateManager::startUp()
@@ -81,9 +79,13 @@ bool LuaStateManager::startUp()
 	luaState = nullptr;
 	luaState = luaL_newstate();
 	luaL_openlibs(luaState);
-	Namespace ref = getGlobalNamespace(luaState);
-	
+	//Namespace ref = getGlobalNamespace(luaState);
+
 	getGlobalNamespace(luaState).addFunction("printMessage", &LuaStateManager::Print);
+
+	getGlobalNamespace(luaState).beginNamespace("math").beginClass<glm::vec3>("vec3").addProperty("x", &Vec3Helper::get<0>, &Vec3Helper::set<0>).endClass();//.addProperty("x", &Vec3Helper::get<0>, &Vec3Helper::set<0>)
+
+
 	return true;
 }
 

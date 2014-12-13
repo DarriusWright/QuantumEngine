@@ -277,9 +277,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LuaCall.inl">
-      <Filter>HeaderFiles</Filter>
-    </None>
     <None Include="LuaObject.inl">
       <Filter>HeaderFiles</Filter>
     </None>
@@ -290,6 +287,9 @@
       <Filter>HeaderFiles</Filter>
     </None>
     <None Include="LuaState.inl">
+      <Filter>HeaderFiles</Filter>
+    </None>
+    <None Include="LuaCall.inl">
       <Filter>HeaderFiles</Filter>
     </None>
   </ItemGroup>

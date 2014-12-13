@@ -5,7 +5,6 @@
 #include <ExportHeader.h>
 
 
-#include <LuaBridge.h>
 #include <iostream>
 
 extern "C" {
@@ -14,12 +13,28 @@ extern "C" {
 # include "lualib.h"
 }
 
+#include <LuaBridge.h>
+
+
+#include <glm.hpp>
+using namespace glm;
+
 #define LUA LuaStateManager::getInstance()
 
 using namespace luabridge;
 
+struct Vec3Helper
+{
+	template <unsigned int index> static float get(glm::vec3 const * vec)
+	{
+		return vec->x; // [index];//[index];
+	}
 
-
+	template <unsigned int index> static void set(glm::vec3 * vec, float value)
+	{
+		vec->x = value;
+	}
+};
 
 
 class LuaStateManager  : public ScriptManager
@@ -76,6 +91,7 @@ protected :
 	//LuaState * luaState;
 	// Registered function MUST always have this signature (int (funcName) (LuaPlus::LuaState*))
 private:
+	void checkForErrors(int state);
 
 
 
