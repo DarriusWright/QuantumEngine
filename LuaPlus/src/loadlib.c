@@ -187,7 +187,7 @@ static void lp_loadlocalconfig(lua_State *L) {
     lua_rawset(L, LUA_GLOBALSINDEX);
 
     strcpy(lb, "\\luaplus51-1201.config.lua");
-    if (access(buff, 0) != -1) {
+    if (_access(buff, 0) != -1) {
       int top = lua_gettop(L);
       int ret = luaL_dofile(L, buff);
       if (ret != 0)
@@ -269,7 +269,7 @@ static void *ll_load (lua_State *L, const char *path) {
   char* dotPos;
   strcpy(buffer, path);
   dotPos = strrchr(buffer, '.');
-  if (dotPos  &&  stricmp(dotPos, ".so") == 0) {
+  if (dotPos  &&  _stricmp(dotPos, ".so") == 0) {
     *dotPos = 0;
     dotPos = NULL;
   }

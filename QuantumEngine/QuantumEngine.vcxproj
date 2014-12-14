@@ -51,14 +51,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>ENGINE_EXPORTS;WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Middleware\Lua\include;$(SolutionDir)Middleware\LuaBridge;$(ProjectDir);$(SolutionDir)Middleware\OAIL\include;$(SolutionDir)Middleware\PhysX\include;$(SolutionDir)Middleware\OpenCL\include;$(SolutionDir)Middleware\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ENGINE_EXPORTS;WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Middleware\glm;$(SolutionDir)LuaPlus;$(SolutionDir)LuaPlus\src;$(SolutionDir)Middleware\Lua\include;$(ProjectDir);$(SolutionDir)Middleware\OAIL\include;$(SolutionDir)Middleware\PhysX\include;$(SolutionDir)Middleware\OpenCL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)Middleware\Lua\lib;$(SolutionDir)Middleware\OAIL\lib;$(SolutionDir)Middleware\OpenCL\lib;$(SolutionDir)Middleware\PhysX\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua52.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);$(SolutionDir)Middleware\Lua\lib;$(SolutionDir)Middleware\OAIL\lib;$(SolutionDir)Middleware\OpenCL\lib;$(SolutionDir)Middleware\PhysX\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>LUAPlus.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,6 +85,7 @@
     <ClInclude Include="Components\Component.h" />
     <ClInclude Include="Components\GraphicsComponent.h" />
     <ClInclude Include="Components\InputComponent.h" />
+    <ClInclude Include="Components\LuaScriptComponent.h" />
     <ClInclude Include="Components\PhysicsComponent.h" />
     <ClInclude Include="Entities\GameObject.h" />
     <ClInclude Include="Files\FileManager.h" />
@@ -94,7 +95,7 @@
     <ClInclude Include="Memory\MemoryManager.h" />
     <ClInclude Include="Physics\PhysicsManager.h" />
     <ClInclude Include="Render\RenderManager.h" />
-    <ClInclude Include="ScriptComponent.h" />
+    <ClInclude Include="Components\ScriptComponent.h" />
     <ClInclude Include="Scripting\LuaStateManager.h" />
     <ClInclude Include="RTTI.h" />
     <ClInclude Include="ExportHeader.h" />
@@ -110,6 +111,7 @@
     <ClCompile Include="Components\Component.cpp" />
     <ClCompile Include="Components\GraphicsComponent.cpp" />
     <ClCompile Include="Components\InputComponent.cpp" />
+    <ClCompile Include="Components\LuaScriptComponent.cpp" />
     <ClCompile Include="Components\PhysicsComponent.cpp" />
     <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="Entities\GameObject.cpp" />
@@ -120,7 +122,7 @@
     <ClCompile Include="Memory\MemoryManager.cpp" />
     <ClCompile Include="Physics\PhysicsManager.cpp" />
     <ClCompile Include="Render\RenderManager.cpp" />
-    <ClCompile Include="ScriptComponent.cpp" />
+    <ClCompile Include="Components\ScriptComponent.cpp" />
     <ClCompile Include="Scripting\LuaStateManager.cpp" />
     <ClCompile Include="Scripting\ScriptManager.cpp" />
     <ClCompile Include="Time\TimeManager.cpp" />

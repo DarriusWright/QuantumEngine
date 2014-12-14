@@ -70,6 +70,9 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LuaScripts\BaseScript.lua" />
+    <None Include="LuaScripts\class.lua" />
+    <None Include="LuaScripts\MoveObject.lua" />
     <None Include="LuaScripts\script.lua" />
     <None Include="LuaScripts\test.lua" />
   </ItemGroup>

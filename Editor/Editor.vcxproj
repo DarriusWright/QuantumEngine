@@ -51,14 +51,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)Middleware\Lua\include;$(SolutionDir)Middleware\LuaBridge;$(SolutionDir)QuantumEngine;$(SolutionDir)Middleware\Qt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Middleware\Lua\include;$(SolutionDir)LuaPlus\src;$(SolutionDir)LuaPlus;$(SolutionDir)Middleware\glm;$(SolutionDir)QuantumEngine;$(SolutionDir)Middleware\Qt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Middleware\Qt\lib;$(SolutionDir)$(Configuration);$(SolutionDir)Middleware\Lua\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua52.lib;Qt5Qmld.lib;QuantumEngine.lib;Qt5Widgetsd.lib;Qt5MultimediaWidgetsd.lib;Qt5Guid.lib;Qt5Cored.lib;Qt5Quickd.lib;Qt5QuickWidgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LUAPlus.lib;lua52.lib;Qt5Qmld.lib;QuantumEngine.lib;Qt5Widgetsd.lib;Qt5MultimediaWidgetsd.lib;Qt5Guid.lib;Qt5Cored.lib;Qt5Quickd.lib;Qt5QuickWidgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

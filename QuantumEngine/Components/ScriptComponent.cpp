@@ -5,24 +5,24 @@ RTTI_DEFINITIONS(ScriptComponent)
 
 ScriptComponent::ScriptComponent(GameObject * gameObject,std::string filePath) : Component(gameObject),filePath(filePath)
 {
-}
 
+}
 
 ScriptComponent::~ScriptComponent()
 {
-}
 
+}
 
 void ScriptComponent::update()
 {
-	LUA->executeScript(filePath.c_str());
-	
+
 }
 
-void ScriptComponent::setPath(std::string path)
+void ScriptComponent::initialize()
 {
-	filePath = path;
+
 }
+
 std::string ScriptComponent::getPath()
 {
 	return filePath;

@@ -10,6 +10,9 @@ class ScriptManager : public Manager
 public:
 
 	ENGINE_SHARED ScriptManager();
-	ENGINE_SHARED virtual ~ScriptManager() = 0;
+	virtual ~ScriptManager() ;
+	virtual bool startUp() ;
+	virtual bool shutDown() ;
+	virtual void update();
 };
 

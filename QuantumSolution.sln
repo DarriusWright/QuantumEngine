@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuantumEngine", "QuantumEngine\QuantumEngine.vcxproj", "{170B45AB-5777-4B39-A1AA-596774052D93}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6266FA2F-94D5-4790-99B6-82B8688F2A1B} = {6266FA2F-94D5-4790-99B6-82B8688F2A1B}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{D6D449E9-88D7-4635-9E13-EB66D67CFA88}"
 EndProject
@@ -17,6 +20,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaBridgeTesting", "LuaBridgeTesting\LuaBridgeTesting.vcxproj", "{92102761-C858-4003-A903-0E3FE5F9B143}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaPlus", "LuaPlus\LuaPlus.vcxproj", "{6266FA2F-94D5-4790-99B6-82B8688F2A1B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLib", "LuaLib\LuaLib.vcxproj", "{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +67,12 @@ Global
 		{6266FA2F-94D5-4790-99B6-82B8688F2A1B}.Release|Win32.ActiveCfg = Release|Win32
 		{6266FA2F-94D5-4790-99B6-82B8688F2A1B}.Release|Win32.Build.0 = Release|Win32
 		{6266FA2F-94D5-4790-99B6-82B8688F2A1B}.Release|x64.ActiveCfg = Release|Win32
+		{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}.Debug|Win32.Build.0 = Debug|Win32
+		{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}.Debug|x64.ActiveCfg = Debug|Win32
+		{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}.Release|Win32.ActiveCfg = Release|Win32
+		{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}.Release|Win32.Build.0 = Release|Win32
+		{038F2AAF-8F27-4CFA-93BF-8BB04A9D26C8}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

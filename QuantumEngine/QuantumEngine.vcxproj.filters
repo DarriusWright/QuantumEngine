@@ -81,7 +81,10 @@
     <ClInclude Include="Entities\GameObjectManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScriptComponent.h">
+    <ClInclude Include="Components\ScriptComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\LuaScriptComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -146,7 +149,10 @@
     <ClCompile Include="Entities\GameObjectManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScriptComponent.cpp">
+    <ClCompile Include="Components\ScriptComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\LuaScriptComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
