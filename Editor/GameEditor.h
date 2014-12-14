@@ -8,18 +8,18 @@
 #include <QtWidgets\qmenu.h>
 #include <QtWidgets\qmenubar.h>
 
-
 class GameEditor : public QMainWindow
 {
 public:
-	GameEditor();//(LuaPlus::LuaState* luaState);
+	GameEditor(LuaPlus::LuaState* luaState);
 	~GameEditor();
 	QMenu * fileMenu;
 	QMenu * gameObjectMenu;
 
 private:
-	void setUpMenu();
 
-	//LuaPlus::LuaState * luaState;
+	void setUpMenu();
+	LuaPlus::LuaState * luaState;
+
 };
 

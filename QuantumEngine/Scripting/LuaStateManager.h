@@ -2,7 +2,9 @@
 #include "ScriptManager.h"
 #include <windows.h>
 #include <sstream>
+
 #include <ExportHeader.h>
+using namespace LuaPlus;
 
 
 #include <iostream>
@@ -25,7 +27,7 @@
 #include <glm.hpp>
 #include <LuaObject.h>
 
-#define LUA LuaStateManager::getInstance()
+#define LUA LuaStateManager::getInstance();
 
 //using namespace luabridge;
 using namespace LuaPlus;
@@ -46,7 +48,8 @@ struct Vec3Helper
 
 class LuaStateManager  : public ScriptManager
 {
-	RTTI_DECLARATIONS(LuaStateManager, ScriptManager)
+
+
 
 public:
 
@@ -116,13 +119,27 @@ public:
 
 protected :
 	ENGINE_SHARED LuaStateManager();
-	//lua_State * luaState;
-	
 	LuaObject globals;
 	LuaState * luaState;
 	// Registered function MUST always have this signature (int (funcName) (LuaPlus::LuaState*))
 private:
-	void checkForErrors(int state);
+
+	int Print(LuaPlus::LuaState* luaState)
+	{
+		// Get the argument count
+		int top = pState->GetTop();
+
+		std::stringstream output;
+		for (int i = 1; i <= top; ++i)
+		{
+			// Retrieve all arguments, if possible they will be converted to strings
+			output << "LUA : " << pState->CheckString(i) << std::endl;
+		}
+		std::cout << output.str();
+
+		// We don't return any values to the script
+		return 0;
+	}
 
 
 

@@ -2,7 +2,7 @@
 #include <lua.hpp>
 
 
-GameEditor::GameEditor()//(LuaPlus::LuaState * luaState) : luaState(luaState)
+GameEditor::GameEditor(LuaPlus::LuaState * luaState) : luaState(luaState)
 {
 	setUpMenu();
 }
@@ -26,4 +26,5 @@ GameEditor::~GameEditor()
 
 	delete LUA;
 	delete GAMEOBJECT;
+
 }

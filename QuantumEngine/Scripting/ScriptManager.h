@@ -2,17 +2,14 @@
 
 #include <Manager.h>
 
-
 class ScriptManager : public Manager
 {
-	RTTI_DECLARATIONS(ScriptManager, Manager);
-
 public:
-
 	ENGINE_SHARED ScriptManager();
-	virtual ~ScriptManager() ;
-	virtual bool startUp() ;
-	virtual bool shutDown() ;
-	virtual void update();
+	ENGINE_SHARED virtual ~ScriptManager() ;
+	ENGINE_SHARED virtual bool startUp() ;
+	ENGINE_SHARED virtual bool shutDown() ;
+	ENGINE_SHARED virtual void update();
+
 };
 

@@ -23,6 +23,7 @@ RTTI_DEFINITIONS(LuaStateManager)
 +-------------- + ---- - +
 */
 
+
 LuaStateManager::LuaStateManager()
 {
 }
