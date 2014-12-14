@@ -1,5 +1,4 @@
 #include "ScriptManager.h"
-RTTI_DEFINITIONS(ScriptManager)
 
 
 ScriptManager::ScriptManager()
